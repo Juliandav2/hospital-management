@@ -5,6 +5,7 @@ import com.hospital.management.domain.enums.Gender;
 import java.time.Instant;
 import com.hospital.management.domain.Patient;
 import com.hospital.management.dto.response.PatientResponse;
+import com.hospital.management.exception.ResourceNotFoundException;
 import com.hospital.management.repository.PatientRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -36,7 +37,7 @@ public class PatientService {
 
     public PatientResponse getPatientById(Long id) {
         Patient patient = patientRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Patient not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Patient not found with id: " + id));
 
         return PatientResponse.builder()
                 .id(patient.getId())
