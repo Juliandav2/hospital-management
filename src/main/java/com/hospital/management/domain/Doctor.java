@@ -33,8 +33,8 @@ public class Doctor {
     @Column (name = "phone")
     private String phone;
 
-    @JoinColumn (name = "specialty_id")
     @ManyToOne (fetch = FetchType.LAZY)
+    @JoinColumn (name = "specialty_id")
     private Specialty specialty;
 
     @Column(name = "created_at", updatable = false)

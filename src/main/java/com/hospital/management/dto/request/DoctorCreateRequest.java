@@ -6,12 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class PatientCreateRequest {
+public class DoctorCreateRequest {
 
     @NotBlank(message = "First name cannot be blank")
     private String firstName;
@@ -23,11 +21,10 @@ public class PatientCreateRequest {
     @NotBlank
     private String email;
 
+    @NotBlank(message = "License number cannot be blank")
+    private String licenseNumber;
+
     private String phone;
 
-    private LocalDate dateOfBirth;
-
-    private String gender;
-
-    private String address;
+    private Long specialtyId;
 }

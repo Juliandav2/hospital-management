@@ -5,13 +5,11 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Getter
-public class PatientResponse {
+public class DoctorResponse {
 
     private Long id;
 
@@ -21,11 +19,11 @@ public class PatientResponse {
 
     private String email;
 
+    private String licenseNumber;
+
     private String phone;
 
-    private LocalDate dateOfBirth;
+    private Long specialtyId;
 
-    private String gender;
-
-    private String address;
+    private String specialtyName;
 }

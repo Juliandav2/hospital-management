@@ -8,17 +8,19 @@ import com.hospital.management.mapper.PatientMapper;
 import com.hospital.management.repository.PatientRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
 @RequiredArgsConstructor
+@Service
 public class PatientService {
 
     private final PatientRepository patientRepository;
     private final PatientMapper patientMapper;
 
+    @Transactional (readOnly = true)
     public List<PatientResponse> getAllPatients () {
         return patientRepository.findAllByDeletedFalse()
                 .stream()
@@ -26,6 +28,7 @@ public class PatientService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional (readOnly = true)
     public PatientResponse getPatientById (Long id) {
         Patient patient = patientRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Patient not found with id: " + id));
